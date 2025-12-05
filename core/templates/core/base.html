@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <tittle>{% block tittle_bar %}Tittle default{% endblock %}</tittle>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>try</ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+            <p>Content default</p>
+        {% endblock %}
+    </main>
+    <footer>
+        <p>This website is made for educational purposes.</p>
+    </footer>
+</body>
+</html>
