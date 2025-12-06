@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Team, Pokemon
 from .forms import TeamForm, PokemonForm
 from django.db.models import Count
@@ -30,3 +30,9 @@ class add_pokemon(CreateView):
     form_class = PokemonForm
     success_url = '/home/'
     template_name = 'core/add_pokemon.html'
+
+class update_team(UpdateView):
+    model = Team
+    form_class = TeamForm
+    success_url = '/home/'
+    template_name = 'core/update_team.html'

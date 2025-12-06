@@ -4,10 +4,35 @@
     Teams - Pokelab
 {% endblock %}
 
-{% block content %}
-<ul>
-{% for team in teams %}
-    <li><a href="{% url 'detail_team' team.pk %}">{{team}}</a>Números de pokemons: {{team.num_pokemon}}</li>
-{% endfor %}
-</ul>
-{% endblock %}
+    {% block content %}
+    <main>
+        {% if teams %}
+            <div class="section-tittlecta">
+                <h1 class="tittle-section">Mis equipos</h1>
+                <a href="{% url 'add_team' %}" class="button-create"><span><i class="fa-solid fa-plus"></i>Crear Equipo Nuevo</span></a>
+            </div>
+            <section>
+                {% for team in teams %}
+            <article class="card">
+                    <h2>{{team}}</h2>
+                    <h1>{{team.num_pokemon}}</h1>
+                    <small>Pokémon</small>
+                    <a href="{% url 'detail_team' team.pk %}" class="button-card">Ver equipo</a>
+                    <a href="{% url 'update_team' pk=team.pk%}" class="button-card">Editar</a>
+                </article>
+                </a>
+                {% endfor %}
+            </section>
+        {% else %}
+            <section>
+                <article class="none-team">
+                    <div class="info">
+                    <h3>No tienes equipos crreados</h3>
+                    <small>¡Empieza a construir tu eqyuoi de ensueño ahora mismo!</small>
+                    </div>
+                    <a class="button-none-team" href="{% url 'add_team' %}">Crea tu primer equipo</a>
+                </article>
+            </section>
+        {% endif %}
+    </main>
+    {% endblock %}
