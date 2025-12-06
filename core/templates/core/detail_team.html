@@ -6,4 +6,11 @@
 
 {% block content %}
 <h1>{{team.name}}</h1>
+
+{% for pokemon in team.pokemon_set.all %}
+    <p>{{pokemon.nickname}}</p>
+    {% for type in pokemon.type.all %}
+        <p>{{type.name}}</p>
+    {% endfor %}
+{% endfor %}
 {% endblock %}

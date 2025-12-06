@@ -2,11 +2,11 @@ from django.db import models
 
 
 class Type(models.Model):
-    type = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     colour_hex = models.CharField(max_length=50)
 
     def __str__(self) -> str:
-        return f"{self.type}"
+        return f"{self.name}"
     
 class Team(models.Model):
     name = models.CharField(max_length=50)
