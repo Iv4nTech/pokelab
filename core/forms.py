@@ -11,4 +11,4 @@ class PokemonForm(ModelForm):
 
     class Meta:
         model = Pokemon
-        fields = ['nickname', 'level', 'pokedex_number','image_url','attack','defense','team','type']
+        fields = ['nickname', 'level', 'pokedex_number','image_url','attack','defense','type']

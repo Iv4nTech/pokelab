@@ -9,4 +9,5 @@ urlpatterns = [
     path('team/<int:pk>/add_pokemon/', add_pokemon.as_view(), name='add_pokemon'),
     path('update_team/<int:pk>/', update_team.as_view(), name='update_team'),
     path('team/<int:team_id>/delete_pokemon/<int:pk>', delete_pokemon.as_view(), name='delete_pokemon'),
+    path('delete_team/<int:pk>', delete_team.as_view(), name='delete_team')
 ]

@@ -14,6 +14,12 @@ class Team(models.Model):
     def __str__(self) -> str:
         return f"{self.name}"
     
+    def calculate_bst_total(self):
+        total = 0
+        for pokemon in self.pokemon_set.all():
+            total = pokemon.attack + pokemon.defense
+        return total
+    
 class Pokemon(models.Model):
     nickname = models.CharField(max_length=50)
     level = models.IntegerField(default=1)
@@ -26,3 +32,5 @@ class Pokemon(models.Model):
 
     def __str__(self) -> str:
         return f"{self.nickname}"
+
+ 

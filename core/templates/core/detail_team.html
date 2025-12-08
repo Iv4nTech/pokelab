@@ -9,10 +9,11 @@
 <small>{{team.description}}</small>
 
 {% for pokemon in team.pokemon_set.all %}
-    <p>{{pokemon.nickname}}</p><a href="{% url 'delete_pokemon' team_id=team.id pk=pokemon.pk  %}">Borrar</a>
+    <p>{{pokemon.nickname}}</p>
     {% for type in pokemon.type.all %}
         <p>{{type.name}}</p>
     {% endfor %}
+    <a class="button-card" href="{% url 'delete_pokemon' team_id=team.id pk=pokemon.pk  %}">Borrar</a>
 {% endfor %}
-<a href="{% url 'add_pokemon' team.id %}">Añadir Pokémon</a>
+<a class="button-card" href="{% url 'add_pokemon' team.id %}">Añadir Pokémon</a>
 {% endblock %}

@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Team, Pokemon
 from .forms import TeamForm, PokemonForm
-from django.db.models import Count
+from django.db.models import Count, Sum, Aggregate
 from django.urls import reverse_lazy
 
 class list_teams(ListView):
@@ -11,7 +11,9 @@ class list_teams(ListView):
     context_object_name = 'teams'
 
     def get_queryset(self):
-        return Team.objects.annotate(num_pokemon=Count('pokemon'))
+        return Team.objects.annotate(num_pokemon = Count('pokemon'))
+
+    
         
 
 class detail_team(DetailView):
@@ -41,8 +43,20 @@ class add_pokemon(CreateView):
     success_url = reverse_lazy('home')
     template_name = 'core/add_pokemon.html'
 
+    def form_valid(self, form):
+        id_team = self.kwargs.get('pk')
+        team = get_object_or_404(Team, pk=id_team)
+        form.instance.team = team
+
+        return super().form_valid(form)
+    
 class update_team(UpdateView):
     model = Team
     form_class = TeamForm
     success_url = reverse_lazy('home')
     template_name = 'core/update_team.html'
+
+class delete_team(DeleteView):
+    model = Team
+    template_name = 'core/delete_pokemon.html'
+    success_url = reverse_lazy('home')

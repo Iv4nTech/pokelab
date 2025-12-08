@@ -16,9 +16,11 @@
             <article class="card">
                     <h2>{{team}}</h2>
                     <h1>{{team.num_pokemon}}</h1>
+                    <span>{{team.calculate_bst_total}} BST</span>
                     <small>Pokémon</small>
                     <a href="{% url 'detail_team' team.pk %}" class="button-card">Ver equipo</a>
                     <a href="{% url 'update_team' pk=team.pk%}" class="button-card">Editar</a>
+                    <a href="{% url 'delete_team' team.pk %}" class="button-card">Eliminar</a>
                 </article>
                 </a>
                 {% endfor %}
